@@ -266,4 +266,4 @@ generated_questions
 ---
 
 *Dernière mise à jour : 12/05/2026*  
-*Auteur : [Ton prénom]*
+*Auteur : [Hassan]*
