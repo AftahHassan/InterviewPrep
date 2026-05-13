@@ -23,7 +23,7 @@
                     <div class="p-6 flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             <span class="w-4 h-4 rounded-full" style="background-color: {{ $domain->color }}"></span>
-                            <span class="text-lg font-medium text-gray-900">{{ $domain->name }}</span>
+                            <a href="{{ route('domains.concepts.index', $domain) }}" class="text-lg font-medium text-gray-900 hover:text-indigo-600">{{ $domain->name }}</a>
                             <span class="text-sm text-gray-500">
                                 {{ $domain->concepts_count }} concepts · {{ $domain->mastered_concepts_count }} maîtrisés
                             </span>
