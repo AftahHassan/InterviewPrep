@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             Nouveau domaine
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-slate-800 border border-slate-700 rounded-xl">
                 <div class="p-6">
                     <form method="POST" action="{{ route('domains.store') }}" class="space-y-6">
                         @csrf
@@ -24,7 +24,7 @@
                                 @foreach ($colors as $color)
                                     <label class="cursor-pointer">
                                         <input type="radio" name="color" value="{{ $color }}" class="sr-only peer" {{ old('color', '#6366f1') === $color ? 'checked' : '' }} required>
-                                        <span class="block w-10 h-10 rounded-full border-2 border-transparent peer-checked:border-gray-800 peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-500" style="background-color: {{ $color }}"></span>
+                                        <span class="block w-10 h-10 rounded-full border-2 border-transparent peer-checked:border-white peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-500" style="background-color: {{ $color }}"></span>
                                     </label>
                                 @endforeach
                             </div>
