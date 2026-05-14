@@ -3,6 +3,7 @@
 use App\Http\Controllers\ConceptController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\GeneratedQuestionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('domains.concepts', ConceptController::class)->scoped(['concept' => 'domain_id']);
     Route::patch('domains/{domain}/concepts/{concept}/status', [ConceptController::class, 'updateStatus'])
         ->name('domains.concepts.updateStatus');
+
+    Route::post('concepts/{concept}/questions', [GeneratedQuestionController::class, 'store'])
+        ->name('generated-questions.store');
+    Route::delete('generated-questions/{generatedQuestion}', [GeneratedQuestionController::class, 'destroy'])
+        ->name('generated-questions.destroy');
 });
 
 require __DIR__.'/auth.php';

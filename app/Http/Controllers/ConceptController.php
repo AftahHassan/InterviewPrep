@@ -49,6 +49,8 @@ class ConceptController extends Controller
     {
         abort_if($domain->user_id !== auth()->id(), 403);
 
+        $concept->load('generatedQuestions');
+
         return view('concepts.show', compact('domain', 'concept'));
     }
 

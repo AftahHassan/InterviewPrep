@@ -31,6 +31,13 @@
                         @endif
                     </div>
 
+                    <div class="mt-8">
+                        <form method="POST" action="{{ route('generated-questions.store', $concept) }}">
+                            @csrf
+                            <x-primary-button>Générer des questions d'entretien</x-primary-button>
+                        </form>
+                    </div>
+
                     <div class="mt-8 flex items-center gap-4">
                         <a href="{{ route('domains.concepts.edit', [$domain, $concept]) }}">
                             <x-primary-button>Modifier</x-primary-button>
@@ -43,6 +50,30 @@
                     </div>
                 </div>
             </div>
+
+            @if ($concept->generatedQuestions->isNotEmpty())
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-white mb-4">Historique des générations</h3>
+
+                    @foreach ($concept->generatedQuestions as $gq)
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 mb-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm text-slate-400">{{ $gq->created_at->format('d/m/Y H:i') }}</span>
+                                <form method="POST" action="{{ route('generated-questions.destroy', $gq) }}" onsubmit="return confirm('Supprimer cette génération ?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-danger-button>Supprimer</x-danger-button>
+                                </form>
+                            </div>
+                            <ol class="list-decimal list-inside space-y-2">
+                                @foreach ($gq->questions as $question)
+                                    <li class="text-slate-300">{{ $question }}</li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
