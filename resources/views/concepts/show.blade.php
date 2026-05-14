@@ -11,6 +11,19 @@
                 <a href="{{ route('domains.concepts.index', $domain) }}" class="text-sm text-indigo-400 hover:text-indigo-300">← Retour aux concepts</a>
             </div>
 
+            @if (session('success'))
+                <div class="mb-4 p-4 bg-green-900/40 border border-green-700 rounded-xl text-green-300">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="mb-4 p-4 bg-red-900/40 border border-red-700 rounded-xl text-red-300">
+                    {{ session('error') }}
+                </div>
+            @endif
+            </div>
+
             <div class="bg-slate-800 border border-slate-700 rounded-xl">
                 <div class="p-6">
                     <div class="flex items-center gap-3 mb-6">

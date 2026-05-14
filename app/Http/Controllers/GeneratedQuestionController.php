@@ -27,7 +27,7 @@ class GeneratedQuestionController extends Controller
                 'Authorization' => 'Bearer ' . env('GROQ_API_KEY'),
                 'Content-Type' => 'application/json',
             ])->timeout(30)->post('https://api.groq.com/openai/v1/chat/completions', [
-                'model' => 'llama3-8b-8192',
+                'model' => 'llama-3.1-8b-instant',
                 'messages' => [
                     ['role' => 'user', 'content' => $prompt],
                 ],
